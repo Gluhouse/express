@@ -1,8 +1,22 @@
-import { Router } from 'express';
-import { getAll } from '../controllers/blogs.js';
+const { Router } = require('express');
+const {
+  createBlog,
+  getAllBlogs,
+  getBlogById,
+  updateBlogById,
+  deleteBlogById,
+} = require('../controllers/blogs');
 
 const router = Router();
 
-router.get('/blogs', getAll);
+router.post('/', createBlog);
 
-export default router;
+router.get('/', getAllBlogs);
+
+router.get('/:id', getBlogById);
+
+router.put('/:id', updateBlogById);
+
+router.delete('/:id', deleteBlogById);
+
+module.exports = router;
